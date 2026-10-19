@@ -180,7 +180,7 @@ def main():
                 st.markdown(verdict(df))
                 st.altair_chart(chart(df, theme), width="stretch")
                 st.caption("Each bar is the probability the image is that color,"
-                           "a color is predicted when its bar reaches the threshold line.")
+                           " a color is predicted when its bar reaches the threshold line.")
             with st.expander("Numbers"):
                 st.dataframe(
                     df[["color", "probability", "threshold", "predicted"]], hide_index=True,
