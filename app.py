@@ -156,7 +156,7 @@ def main():
     st.title("Which Magic color is this art?")
     st.write("Upload a picture and a neural network trained on Magic: The Gathering card art "
              "guesses which of the five colors it belongs to: white, blue, black, red, green. "
-             "It can pick several colors, or none.")
+             "It can be multi-colored or colorless.")
 
     net, info = load_model()
     theme = "dark" if st.context.theme.type == "dark" else "light"
@@ -179,8 +179,8 @@ def main():
             with right:
                 st.markdown(verdict(df))
                 st.altair_chart(chart(df, theme), width="stretch")
-                st.caption("Bar = the model's probability. Line = that color's threshold: "
-                           "a color is predicted when its bar reaches the line (solid bars).")
+                st.caption("Each bar is the probability the image is that color,"
+                           "a color is predicted when its bar reaches the threshold line.")
             with st.expander("Numbers"):
                 st.dataframe(
                     df[["color", "probability", "threshold", "predicted"]], hide_index=True,
